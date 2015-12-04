@@ -17,7 +17,12 @@ import org.apache.hadoop.hive.serde2.objectinspector.ObjectInspectorFactory;
 import org.apache.hadoop.hive.serde2.objectinspector.StructObjectInspector;
 import org.apache.hadoop.hive.serde2.objectinspector.primitive.PrimitiveObjectInspectorFactory;
 import org.apache.hadoop.io.Text;
-
+/**
+ * 
+ * 自定义UDTF函数需要继承GenericUDTF，然后重载initialize和process方法，本例将一个字符串按传入的分隔符切分
+ * @author sean
+ *
+ */
 public class One2many extends GenericUDTF {
 
 	Object[] result = new Object[1];
@@ -42,6 +47,9 @@ public class One2many extends GenericUDTF {
 				fieldNames, fieldOIs);
 	}
 
+	/**
+	 * args[0]是带切分的字符串，args[1]是分隔符
+	 */
 	@Override
 	public void process(Object[] args) throws HiveException {
 		try {

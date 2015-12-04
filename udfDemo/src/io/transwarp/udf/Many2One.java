@@ -3,7 +3,11 @@ package io.transwarp.udf;
 import org.apache.hadoop.hive.ql.exec.UDAF;
 import org.apache.hadoop.hive.ql.exec.UDAFEvaluator;
 import org.apache.hadoop.io.IntWritable;
-
+/**
+ * 自定义UDAF需要继承UDAF，然后内部实现一个UDAFEvaluator借口
+ * @author sean
+ *
+ */
 public class Many2One extends UDAF {
 
 	public static class MaximumIntUDAFEvaluator implements UDAFEvaluator {
